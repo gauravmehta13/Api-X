@@ -1,41 +1,33 @@
+import 'dart:async';
 import 'dart:convert';
-import 'package:PublicApi/Api%20details.dart';
-import 'package:google_fonts/google_fonts.dart';
-import 'package:http/http.dart' as http;
 import 'package:flutter/material.dart';
+import 'package:google_fonts/google_fonts.dart';
+import 'package:flutter/material.dart';
+import 'package:http/http.dart' as http;
+import 'Cateogory Details.dart';
 
-class CategoryDetails extends StatefulWidget {
-  String category;
-  // ignore: non_constant_identifier_names
-  CategoryDetails({
-    this.category,
-  });
+class HomePage extends StatefulWidget {
   @override
-  _CategoryDetailsState createState() => _CategoryDetailsState();
+  HomePageState createState() => new HomePageState();
 }
 
-class _CategoryDetailsState extends State<CategoryDetails> {
+class HomePageState extends State<HomePage> {
   List data;
+  final String url = "https://api.publicapis.org/categories";
   @override
   void initState() {
     super.initState();
-
-    this.getcategoryData();
+    this.getData();
   }
 
-  Future<String> getcategoryData() async {
-    var category1;
+  Future<String> getData() async {
+    var response = await http
+        .get(Uri.encodeFull(url), headers: {"Accept": "application/json"});
+
+    // var data = response.body;
+    print(response.body);
     setState(() {
-      category1 = widget.category;
-    });
-    var response = await http.get(
-        Uri.encodeFull(
-            "https://api.publicapis.org/entries?category=$category1&https=true"),
-        headers: {"Accept": "application/json"});
-    print(widget.category);
-    setState(() {
-      var convertdata = json.decode(response.body);
-      data = convertdata['entries'];
+      data = json.decode(response.body);
     });
 
     return "Success!";
@@ -62,20 +54,15 @@ class _CategoryDetailsState extends State<CategoryDetails> {
           child: MaterialButton(
             onPressed: () {
               Navigator.of(context).push(MaterialPageRoute(
-                  builder: (context) => ApiDetails(
-                        category: data[index]["Category"].toString(),
-                        api: data[index]["API"].toString(),
-                        cors: data[index]["Cors"].toString(),
-                        https: data[index]["HTTPS"].toString(),
-                        description: data[index]["Description"].toString(),
-                        auth: data[index]["Auth"].toString(),
-                        link: data[index]["Link"].toString(),
+                  builder: (context) => CategoryDetails(
+                        category: data[index].toString(),
                       )));
+              print(data[index].toString());
             },
             padding: EdgeInsets.all(0),
             child: Padding(
               padding: const EdgeInsets.fromLTRB(5, 5, 5, 0),
-              child: Text(data[index]['API'].toString(),
+              child: Text(data[index],
                   textAlign: TextAlign.center,
                   style: GoogleFonts.montserrat(
                     textStyle:
