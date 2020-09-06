@@ -29,11 +29,12 @@ class _splashState extends State<splash> {
             height: 100,
           ),
           Container(
-            height: 300,
+            height: 350,
             width: double.infinity,
             decoration: BoxDecoration(
                 image: DecorationImage(
-                    image: AssetImage('assets/splash.gif'), fit: BoxFit.cover)),
+                    image: AssetImage('assets/splash.png'),
+                    fit: BoxFit.fitHeight)),
           ),
           SizedBox(
             height: 280,
