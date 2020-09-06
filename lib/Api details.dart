@@ -40,7 +40,7 @@ class ApiDetails extends StatelessWidget {
                 elevation: 5,
                 child: Container(
                   width: MediaQuery.of(context).size.width - 20,
-                  padding: EdgeInsets.fromLTRB(20, 10, 20, 10),
+                  padding: EdgeInsets.fromLTRB(10, 10, 10, 10),
                   child: Column(
                     children: [
                       Text(api,
@@ -61,8 +61,8 @@ class ApiDetails extends StatelessWidget {
                         height: 50,
                       ),
                       Row(
+                        mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                         children: [
-                          Spacer(),
                           Container(
                               width: 150,
                               height: 100,
@@ -93,9 +93,36 @@ class ApiDetails extends StatelessWidget {
                                           )),
                                     ],
                                   ))),
-                          Spacer(
-                            flex: 3,
-                          ),
+                          Container(
+                              width: 150,
+                              height: 100,
+                              padding: EdgeInsets.all(10),
+                              child: Card(
+                                  shape: RoundedRectangleBorder(
+                                    borderRadius: BorderRadius.all(
+                                      Radius.circular(20),
+                                    ),
+                                  ),
+                                  elevation: 5,
+                                  child: Column(
+                                    crossAxisAlignment:
+                                        CrossAxisAlignment.center,
+                                    mainAxisAlignment: MainAxisAlignment.center,
+                                    children: <Widget>[
+                                      Text("Auth",
+                                          style: GoogleFonts.montserrat(
+                                            textStyle: TextStyle(
+                                                fontSize: 20,
+                                                fontWeight: FontWeight.w500),
+                                          )),
+                                      Text(auth,
+                                          style: GoogleFonts.montserrat(
+                                            textStyle: TextStyle(
+                                                fontSize: 15,
+                                                fontWeight: FontWeight.w500),
+                                          )),
+                                    ],
+                                  ))),
                           Container(
                               width: 150,
                               height: 100,
@@ -126,7 +153,6 @@ class ApiDetails extends StatelessWidget {
                                           )),
                                     ],
                                   ))),
-                          Spacer()
                         ],
                       ),
                       SizedBox(
@@ -141,7 +167,10 @@ class ApiDetails extends StatelessWidget {
                               textStyle: TextStyle(
                                   fontSize: 15, fontWeight: FontWeight.w500),
                             )),
-                      )
+                      ),
+                      SizedBox(
+                        height: 30,
+                      ),
                     ],
                   ),
                 ),
