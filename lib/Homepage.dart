@@ -2,7 +2,6 @@ import 'dart:async';
 import 'dart:convert';
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
-import 'package:flutter/material.dart';
 import 'package:http/http.dart' as http;
 import 'Cateogory Details.dart';
 
@@ -12,7 +11,7 @@ class HomePage extends StatefulWidget {
 }
 
 class HomePageState extends State<HomePage> {
-  List? data;
+  late List data;
   final String url = "https://api.publicapis.org/categories";
   @override
   void initState() {
@@ -21,8 +20,8 @@ class HomePageState extends State<HomePage> {
   }
 
   Future<String> getData() async {
-    var response = await http
-        .get(Uri.encodeFull(url) as Uri, headers: {"Accept": "application/json"});
+    var response =
+        await http.get(Uri.parse(url), headers: {"Accept": "application/json"});
 
     // var data = response.body;
     print(response.body);
@@ -51,7 +50,7 @@ class HomePageState extends State<HomePage> {
           height: MediaQuery.of(context).size.height,
           color: Colors.black,
           child: GridView.builder(
-            itemCount: data == null ? 0 : data!.length,
+            itemCount: data == null ? 0 : data.length,
             gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
               crossAxisCount: 2,
               childAspectRatio: (2 / 1),
@@ -69,14 +68,14 @@ class HomePageState extends State<HomePage> {
                   onPressed: () {
                     Navigator.of(context).push(MaterialPageRoute(
                         builder: (context) => CategoryDetails(
-                              category: data![index].toString(),
+                              category: data[index].toString(),
                             )));
-                    print(data![index].toString());
+                    print(data[index].toString());
                   },
                   padding: EdgeInsets.all(0),
                   child: Padding(
                     padding: const EdgeInsets.fromLTRB(5, 5, 5, 0),
-                    child: Text(data![index],
+                    child: Text(data[index],
                         textAlign: TextAlign.center,
                         style: GoogleFonts.montserrat(
                           textStyle: TextStyle(
