@@ -4,7 +4,7 @@ description: A new Flutter project.
 # The following line prevents the package from being accidentally published to
 # pub.dev using `pub publish`. This is preferred for private packages.
 publish_to: "none" 
-version: 1.0.0+1
+version: 1.0.0+2
 
 environment:
   sdk: '>=2.12.0 <3.0.0'
@@ -13,6 +13,7 @@ dependencies:
   flutter:
     sdk: flutter
   cupertino_icons: ^1.0.3
+  flutter_search_bar: ^3.0.0-dev.1
   flutter_automation: ^2.0.0
   flutter_native_splash: ^1.2.0
   google_fonts: ^2.1.0
