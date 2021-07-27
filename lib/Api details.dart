@@ -5,13 +5,13 @@ import 'package:google_fonts/google_fonts.dart';
 
 class ApiDetails extends StatelessWidget {
   @override
-  String? api;
-  String? description;
-  String? auth;
-  String? https;
-  String? cors;
-  String? link;
-  String? category;
+  String?? api;
+  String?? description;
+  String?? auth;
+  String?? https;
+  String?? cors;
+  String?? link;
+  String?? category;
 
   ApiDetails(
       {this.https,
@@ -27,7 +27,7 @@ class ApiDetails extends StatelessWidget {
       appBar: AppBar(
         backgroundColor: Color(0xFFFF0000),
         title: Text(
-          api!,
+          api!!,
           style: TextStyle(
               fontFamily: 'Montserrat',
               fontSize: 25,
@@ -59,7 +59,7 @@ class ApiDetails extends StatelessWidget {
                       SizedBox(
                         height: 10,
                       ),
-                      Text(description!,
+                      Text(description!!,
                           textAlign: TextAlign.center,
                           style: GoogleFonts.montserrat(
                             textStyle: TextStyle(
@@ -93,7 +93,7 @@ class ApiDetails extends StatelessWidget {
                                                 fontSize: 20,
                                                 fontWeight: FontWeight.w500),
                                           )),
-                                      Text(https!,
+                                      Text(https!!,
                                           style: GoogleFonts.montserrat(
                                             textStyle: TextStyle(
                                                 fontSize: 15,
@@ -124,7 +124,7 @@ class ApiDetails extends StatelessWidget {
                                                 fontSize: 20,
                                                 fontWeight: FontWeight.w500),
                                           )),
-                                      Text(auth!,
+                                      Text(auth!!,
                                           style: GoogleFonts.montserrat(
                                             textStyle: TextStyle(
                                                 fontSize: 15,
@@ -155,7 +155,7 @@ class ApiDetails extends StatelessWidget {
                                                 fontSize: 20,
                                                 fontWeight: FontWeight.w500),
                                           )),
-                                      Text(cors!,
+                                      Text(cors!!,
                                           style: GoogleFonts.montserrat(
                                             textStyle: TextStyle(
                                                 fontSize: 15,
@@ -171,7 +171,7 @@ class ApiDetails extends StatelessWidget {
                       RaisedButton(
                         elevation: 15,
                         onPressed: () {
-                          launch(link!);
+                          launch(link!!);
                         },
                         color: Color(0xFFFF0000),
                         child: Text('Access API',
